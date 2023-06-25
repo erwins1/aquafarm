@@ -12,4 +12,5 @@ type Repository interface {
 	GetPond(ctx context.Context, filter model.GetPondReq) ([]model.Pond, error)
 	GetPondByID(ctx context.Context, req model.GetPondByID) (model.Pond, error)
 	DeletPondByID(ctx context.Context, req model.DeletePondByID) error
+	UpdatePond(ctx context.Context, req model.UpsertPond) error
 }

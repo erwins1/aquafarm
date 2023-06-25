@@ -94,3 +94,22 @@ func (m *DeletePondByID) Validate() error {
 
 	return nil
 }
+
+type UpsertPond struct {
+	PondID      int64  `json:"pond_id"`
+	FarmID      int64  `json:"farm_id"`
+	PondName    string `json:"pond_name"`
+	Description string `json:"description"`
+}
+
+func (m *UpsertPond) Validate() error {
+	if m.FarmID == 0 {
+		return errors.New("farm id cannot be empty")
+	}
+
+	if m.PondName == "" {
+		return errors.New("pond name cannot be empty")
+	}
+
+	return nil
+}

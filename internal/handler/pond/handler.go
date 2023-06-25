@@ -11,4 +11,5 @@ type Handler interface {
 	HandlerGetPond(w http.ResponseWriter, r *http.Request, params httprouter.Params)
 	HandlerGetPondByID(w http.ResponseWriter, r *http.Request, params httprouter.Params)
 	HandlerDeletePond(w http.ResponseWriter, r *http.Request, params httprouter.Params)
+	HandlerUpsertPond(w http.ResponseWriter, r *http.Request, params httprouter.Params)
 }

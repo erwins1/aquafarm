@@ -21,6 +21,7 @@ func New(httpRouter *httprouter.Router, uPond uPond.Usecase) hPond.Handler {
 	httpRouter.GET("/pond/:pond_id", h.HandlerGetPondByID)
 	httpRouter.POST("/pond", h.HandlerAddPond)
 	httpRouter.DELETE("/pond", h.HandlerDeletePond)
+	httpRouter.PUT("/pond", h.HandlerUpsertPond)
 
 	return h
 }

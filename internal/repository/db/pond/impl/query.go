@@ -65,4 +65,15 @@ const (
 		WHERE 
 			pond_id = $1
 	`
+
+	queryUpdatePond = `
+		UPDATE
+			ponds
+		SET
+			farm_id = $2
+			, description = $3
+		WHERE
+			pond_id = $1
+			AND status = 1
+	`
 )
