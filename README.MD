@@ -3,6 +3,7 @@
 ## Prerequisites
   1. Go v1.19
   2. Mockery (for unit test) detail: https://github.com/vektra/mockery
+  3. Docker
 
 ## Initial Setup
   1. Name this project folder as aquafarm

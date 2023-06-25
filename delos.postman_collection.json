@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "2c78024a-6bb2-4fb2-8f59-f60714e6c513",
+		"name": "delos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25566090"
+	},
+	"item": [
+		{
+			"name": "Farm",
+			"item": [
+				{
+					"name": "get farm",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/farm?page=1&per_page=5",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"farm"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add farm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"farm_name\": \"Farm 1 deleted\",\n    \"description\": \"desc\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/farm",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"farm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get farm by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/farm/7",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"farm",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete farm",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"farm_id\": 9\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/farm",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"farm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upsert farm",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"farm_name\": \"Farm 3\",\n    \"description\": \"updated\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/farm",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"farm"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pond",
+			"item": [
+				{
+					"name": "add pond",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pond_name\": \"Pond A1\",\n    \"farm_id\": 7,\n    \"description\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/pond",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"pond"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get pond",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/pond?page=1&per_page=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"pond"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get pond by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/pond/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"pond",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upsert pond",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pond_name\": \"Pond A2\",\n    \"farm_id\": 7,\n    \"description\": \"updated\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/pond",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"pond"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "get log",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/log",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"log"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
