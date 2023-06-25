@@ -8,7 +8,7 @@ import (
 
 func (r *repository) GetFarmByName(ctx context.Context, req model.GetFarmByNameReq) ([]model.GetFarmByNameRes, error) {
 	var (
-		result []model.GetFarmByNameRes
+		result = []model.GetFarmByNameRes{}
 		err    error
 	)
 
@@ -23,7 +23,7 @@ func (r *repository) GetFarmByName(ctx context.Context, req model.GetFarmByNameR
 
 func (r *repository) GetFarm(ctx context.Context, filter model.GetFarmReq) ([]model.GetFarmResult, error) {
 	var (
-		result []model.GetFarmResult
+		result = []model.GetFarmResult{}
 		err    error
 	)
 

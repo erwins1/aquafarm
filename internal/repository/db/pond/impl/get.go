@@ -9,7 +9,7 @@ import (
 // get pond based on farm id
 func (r *repository) GetPondByFarmID(ctx context.Context, req model.GetPondByFarmIDReq) ([]model.Pond, error) {
 	var (
-		result []model.Pond
+		result = []model.Pond{}
 		err    error
 	)
 	// get data from db
@@ -25,7 +25,7 @@ func (r *repository) GetPondByFarmID(ctx context.Context, req model.GetPondByFar
 // get pond by name
 func (r *repository) GetPondByName(ctx context.Context, req model.GetPondByNameReq) ([]model.GetPondByNameRes, error) {
 	var (
-		result []model.GetPondByNameRes
+		result = []model.GetPondByNameRes{}
 		err    error
 	)
 	// get data from db
@@ -41,7 +41,7 @@ func (r *repository) GetPondByName(ctx context.Context, req model.GetPondByNameR
 // get pond func
 func (r *repository) GetPond(ctx context.Context, filter model.GetPondReq) ([]model.Pond, error) {
 	var (
-		result []model.Pond
+		result = []model.Pond{}
 		err    error
 	)
 
@@ -62,7 +62,7 @@ func (r *repository) GetPond(ctx context.Context, filter model.GetPondReq) ([]mo
 // get pond by pond id
 func (r *repository) GetPondByID(ctx context.Context, req model.GetPondByID) (model.Pond, error) {
 	var (
-		result model.Pond
+		result = model.Pond{}
 		err    error
 	)
 

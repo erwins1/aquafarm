@@ -9,7 +9,7 @@ import (
 
 func (r *repository) GetHttpCountLog(ctx context.Context) ([]model.LogCount, error) {
 	var (
-		result []model.LogCount
+		result = make([]model.LogCount, 0)
 		err    error
 	)
 	logCountDataKey := constant.HttpLogCountRedisKey

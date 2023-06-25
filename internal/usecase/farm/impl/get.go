@@ -35,9 +35,5 @@ func (u *usecase) GetFarmByID(ctx context.Context, req model.GetFarmByIDReq) (mo
 	result.Ponds, err = u.rDbPond.GetPondByFarmID(ctx, model.GetPondByFarmIDReq{
 		FarmID: result.FarmID,
 	})
-	if err != nil {
-		return result, err
-	}
-
 	return result, err
 }
