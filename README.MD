@@ -21,3 +21,5 @@
 
 ## Run Test
   1. Run using command `make test`
+## Notes
+  1. For API documentation can export `aquafarm.postman_collection.json` to postman
