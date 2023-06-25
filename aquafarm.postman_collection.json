@@ -242,6 +242,33 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "delete pond",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pond_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/pond",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"pond"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
