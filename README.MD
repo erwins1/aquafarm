@@ -23,3 +23,4 @@
   1. Run using command `make test`
 ## Notes
   1. For API documentation can export `aquafarm.postman_collection.json` to postman
+  2. PORT for running app can be defined on .env file `HTTP_HOST`
