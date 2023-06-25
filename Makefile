@@ -15,3 +15,9 @@ run-app: build-app
 	@echo " > Building [aquafarm app]..."
 	@ ./bin/http
 	@echo " > Finished building [aquafarm app]"
+
+# Test
+test:
+	@echo " > Testing all..."
+	@go test -race -cover ./...
+	@echo " > Finished testing"

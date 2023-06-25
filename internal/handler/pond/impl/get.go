@@ -13,16 +13,16 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
-func (h *handler) HandlerGetFarm(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
+func (h *handler) HandlerGetPond(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
 	var (
 		resp       model.JSONResponse
 		err        error
-		getFarmReq model.GetFarmReq
-		getFarmRes []model.GetFarmResult
+		getPondReq model.GetPondReq
+		getPondRes []model.Pond
 	)
 
 	// parse request param
-	err = getFarmReq.ParseAndValidate(r)
+	err = getPondReq.ParseAndValidate(r)
 	if err != nil { // check error
 		resp.Errors = append(resp.Errors, err.Error())
 		result, _ := json.Marshal(resp)
@@ -31,7 +31,7 @@ func (h *handler) HandlerGetFarm(w http.ResponseWriter, r *http.Request, params 
 	}
 
 	// insert to db
-	getFarmRes, err = h.uFarm.GetFarm(context.Background(), getFarmReq)
+	getPondRes, err = h.uPond.GetPond(context.Background(), getPondReq)
 	if err != nil {
 		resp.Errors = append(resp.Errors, err.Error())
 		result, _ := json.Marshal(resp)
@@ -39,21 +39,21 @@ func (h *handler) HandlerGetFarm(w http.ResponseWriter, r *http.Request, params 
 		return
 	}
 
-	resp.Data = getFarmRes
+	resp.Data = getPondRes
 	result, _ := json.Marshal(resp)
 	fmt.Fprint(w, string(result))
 }
 
-func (h *handler) HandlerGetFarmByID(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
+func (h *handler) HandlerGetPondByID(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
 	var (
-		resp       model.JSONResponse
-		err        error
-		getFarmReq model.GetFarmByIDReq
-		getFarmRes model.GetFarmByIDRes
+		resp           model.JSONResponse
+		err            error
+		getPondByIDReq model.GetPondByID
+		getPondByIDRes model.Pond
 	)
 
 	// parse request param
-	getFarmReq.FarmID, err = strconv.ParseInt(path.Base(r.URL.Path), 10, 64)
+	getPondByIDReq.PondID, err = strconv.ParseInt(path.Base(r.URL.Path), 10, 64)
 	if err != nil { // check error
 		resp.Errors = append(resp.Errors, err.Error())
 		result, _ := json.Marshal(resp)
@@ -61,9 +61,10 @@ func (h *handler) HandlerGetFarmByID(w http.ResponseWriter, r *http.Request, par
 		return
 	}
 
-	getFarmRes, err = h.uFarm.GetFarmByID(context.Background(), getFarmReq)
+	// get data
+	getPondByIDRes, err = h.uPond.GetPondByID(context.Background(), getPondByIDReq)
 	if err != nil {
-		if err.Error() == constant.ErrNotFound {
+		if err.Error() == constant.ErrNotFound { // check if the id not exist
 			w.WriteHeader(http.StatusNotFound)
 			resp.Errors = append(resp.Errors, err.Error())
 			result, _ := json.Marshal(resp)
@@ -76,7 +77,8 @@ func (h *handler) HandlerGetFarmByID(w http.ResponseWriter, r *http.Request, par
 		return
 	}
 
-	resp.Data = getFarmRes
+	// returning result
+	resp.Data = getPondByIDRes
 	result, _ := json.Marshal(resp)
 	fmt.Fprint(w, string(result))
 }

@@ -11,7 +11,7 @@ func (r *repository) InsertFarm(ctx context.Context, data model.InsertFarmReq) e
 		err error
 	)
 
-	_, err = r.db.ExecContext(ctx, queryInsertFarm, data.FarmName)
+	_, err = r.db.ExecContext(ctx, queryInsertFarm, data.FarmName, data.Description)
 	if err != nil {
 		log.Printf("[repository.db.farm.InsertFarm] err: %v", err)
 		return err

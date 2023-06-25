@@ -3,7 +3,7 @@ package impl
 import (
 	rDbFarm "aquafarm/internal/repository/db/farm"
 	rDbPond "aquafarm/internal/repository/db/pond"
-	uFarm "aquafarm/internal/usecase/farm"
+	uPond "aquafarm/internal/usecase/pond"
 )
 
 type usecase struct {
@@ -11,7 +11,7 @@ type usecase struct {
 	rDbPond rDbPond.Repository
 }
 
-func New(rDbFarm rDbFarm.Repository, rDbPond rDbPond.Repository) uFarm.Usecase {
+func New(rDbFarm rDbFarm.Repository, rDbPond rDbPond.Repository) uPond.Usecase {
 	return &usecase{
 		rDbFarm: rDbFarm,
 		rDbPond: rDbPond,

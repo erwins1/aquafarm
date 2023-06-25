@@ -20,6 +20,8 @@ func New(httpRouter *httprouter.Router, uFarm uFarm.Usecase) hFarm.Handler {
 	httpRouter.GET("/farm", h.HandlerGetFarm)
 	httpRouter.GET("/farm/:farm_id", h.HandlerGetFarmByID)
 	httpRouter.POST("/farm", h.HandlerAddFarm)
+	httpRouter.DELETE("/farm", h.HandlerDeleteFarm)
+	httpRouter.PUT("/farm", h.HandlerUpsertFarm)
 
 	return h
 }

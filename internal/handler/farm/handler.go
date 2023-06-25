@@ -8,4 +8,7 @@ import (
 
 type Handler interface {
 	HandlerAddFarm(w http.ResponseWriter, r *http.Request, params httprouter.Params)
+	HandlerGetFarm(w http.ResponseWriter, r *http.Request, params httprouter.Params)
+	HandlerGetFarmByID(w http.ResponseWriter, r *http.Request, params httprouter.Params)
+	HandlerDeleteFarm(w http.ResponseWriter, r *http.Request, params httprouter.Params)
 }

@@ -8,7 +8,8 @@ import (
 )
 
 type InsertFarmReq struct {
-	FarmName string `json:"farm_name"`
+	FarmName    string `json:"farm_name"`
+	Description string `json:"description"`
 }
 
 func (m *InsertFarmReq) Validate() error {
@@ -61,8 +62,9 @@ func (m *GetFarmReq) ParseAndValidate(r *http.Request) error {
 }
 
 type GetFarmResult struct {
-	FarmID   int64  `json:"farm_id" db:"farm_id"`
-	FarmName string `json:"farm_name" db:"farm_name"`
+	FarmID      int64  `json:"farm_id" db:"farm_id"`
+	FarmName    string `json:"farm_name" db:"farm_name"`
+	Description string `json:"description" db:"description"`
 }
 
 type GetFarmByIDReq struct {
@@ -70,6 +72,34 @@ type GetFarmByIDReq struct {
 }
 
 type GetFarmByIDRes struct {
-	FarmID   int64  `json:"farm_id" db:"farm_id"`
-	FarmName string `json:"farm_name" db:"farm_name"`
+	FarmID      int64  `json:"farm_id" db:"farm_id"`
+	FarmName    string `json:"farm_name" db:"farm_name"`
+	Description string `json:"description" db:"description"`
+	Ponds       []Pond `json:"ponds"`
+}
+
+type DeleteFarmByIDReq struct {
+	FarmID int64 `json:"farm_id"`
+}
+
+func (m *DeleteFarmByIDReq) Validate() error {
+	if m.FarmID == 0 {
+		return errors.New("farm id cannot be empty")
+	}
+
+	return nil
+}
+
+type UpsertFarm struct {
+	FarmID      int64  `json:"farm_id"`
+	FarmName    string `json:"farm_name"`
+	Description string `json:"description"`
+}
+
+func (m *UpsertFarm) Validate() error {
+	if m.FarmName == "" {
+		return errors.New("farm name cannot be empty")
+	}
+
+	return nil
 }
