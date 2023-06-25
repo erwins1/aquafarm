@@ -8,13 +8,13 @@ import (
 )
 
 type repository struct {
-	dbSlave *sqlx.DB
+	dbConn *sqlx.DB
 }
 
 func New(
-	dbSlave *sqlx.DB,
+	dbConn *sqlx.DB,
 ) rDbw.Repository {
 	return &repository{
-		dbSlave: dbSlave,
+		dbConn: dbConn,
 	}
 }

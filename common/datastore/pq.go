@@ -28,8 +28,6 @@ func InitPostgres() *sqlx.DB {
 		dbHost,
 		dbPort)
 
-	log.Println(strConn)
-
 	if strConn == "" {
 		return nil
 	}

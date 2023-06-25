@@ -2,16 +2,16 @@ package main
 
 import (
 	"aquafarm/common/datastore"
+	"aquafarm/common/dbw"
 	"aquafarm/common/redisw"
 
+	dbwImpl "aquafarm/common/dbw/impl"
 	rediswImpl "aquafarm/common/redisw/impl"
-
-	"github.com/jmoiron/sqlx"
 )
 
 type resourceHTTP struct {
-	Redis  redisw.Repository
-	DbConn *sqlx.DB
+	Redis redisw.Repository
+	Db    dbw.Repository
 }
 
 func initResourceHTTP() *resourceHTTP {
@@ -22,7 +22,10 @@ func initResourceHTTP() *resourceHTTP {
 	redisConn := datastore.InitRedisConnection()
 	// put redis connection to redis wrapper
 	resources.Redis = rediswImpl.New(*redisConn)
-	resources.DbConn = datastore.InitPostgres()
+
+	// init db
+	DbConn := datastore.InitPostgres()
+	resources.Db = dbwImpl.New(DbConn)
 
 	return &resources
 }
